@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ulaanbaatar Elite International School - IELTS Writing Practice</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: #1a2a44;
+}
+
+header {
+    background-color: #0a1f44;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+nav {
+    background-color: #102b63;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+section {
+    padding: 40px;
+    border-bottom: 1px solid #eee;
+}
+
+h2 {
+    color: #0a1f44;
+}
+
+.card {
+    background-color: #f5f8ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #0a1f44;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #102b63;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+input {
+    padding: 8px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.dashboard {
+    background-color: #e8edff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: #0a1f44;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Ulaanbaatar Elite International School</h1>
+<p>IELTS Writing Practice Platform</p>
+<img src="https://images.unsplash.com/photo-1588072432836-e10032774350" alt="School Image">
+</header>
+
+<nav>
+<a href="#task1">Task 1</a>
+<a href="#task2">Task 2</a>
+<a href="#band">Band Scores</a>
+<a href="#samples">Samples</a>
+<a href="#submit">Submit Essay</a>
+<a href="#dashboard">Dashboard</a>
+</nav>
+
+<section id="task1">
+<h2>IELTS Writing Task 1 Practice</h2>
+<div class="card">
+<p><strong>Question:</strong> The chart below shows the percentage of households with internet access in Europe from 2000 to 2020. Summarise the information by selecting and reporting the main features.</p>
+</div>
+</section>
+
+<section id="task2">
+<h2>IELTS Writing Task 2 Practice</h2>
+<div class="card">
+<p><strong>Question:</strong> Some people believe that technology has made our lives more complicated. To what extent do you agree or disagree?</p>
+</div>
+</section>
+
+<section id="band">
+<h2>Band Score Explanation</h2>
+<div class="card">
+<ul>
+<li><strong>Band 9:</strong> Fully answers question, well-developed ideas, flawless grammar.</li>
+<li><strong>Band 7:</strong> Clear position, good vocabulary, minor errors.</li>
+<li><strong>Band 6:</strong> Addresses task but with limited development and some grammar mistakes.</li>
+<li><strong>Band 5:</strong> Incomplete response, frequent grammar errors.</li>
+</ul>
+</div>
+</section>
+
+<section id="samples">
+<h2>Sample Essays</h2>
+<div class="card">
+<h3>Task 2 Sample (Band 7)</h3>
+<p>While technology has undeniably improved efficiency, it has also introduced new complexities into daily life. However, I believe the advantages outweigh the disadvantages...</p>
+</div>
+</section>
+
+<section id="submit">
+<h2>Submit Your Essay</h2>
+<div class="card">
+<input type="text" id="name" placeholder="Your Name">
+<textarea id="essay" placeholder="Write your essay here..."></textarea>
+<button onclick="submitEssay()">Submit</button>
+<p id="confirmation"></p>
+</div>
+</section>
+
+<section id="dashboard">
+<h2>Progress Tracker Dashboard</h2>
+<div class="dashboard">
+<p>Essays Submitted: <span id="essayCount">0</span></p>
+<p>Estimated Writing Level: <span id="level">Beginner</span></p>
+</div>
+</section>
+
+<section>
+<h2>Writing Advice</h2>
+<div class="card">
+<ul>
+<li>Always write a clear introduction and conclusion.</li>
+<li>Use linking words such as "however", "therefore", and "in addition".</li>
+<li>Avoid memorised answers.</li>
+<li>Check grammar and spelling before submitting.</li>
+<li>Practice under timed conditions (20 min Task 1, 40 min Task 2).</li>
+</ul>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Ulaanbaatar Elite International School | IELTS Writing Practice</p>
+</footer>
+
+<script>
+let count = 0;
+
+function submitEssay() {
+    let name = document.getElementById("name").value;
+    let essay = document.getElementById("essay").value;
+
+    if(name === "" || essay === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    count++;
+    document.getElementById("essayCount").innerText = count;
+
+    if(count >= 3) {
+        document.getElementById("level").innerText = "Intermediate";
+    }
+    if(count >= 6) {
+        document.getElementById("level").innerText = "Advanced";
+    }
+
+    document.getElementById("confirmation").innerText =
+        "Thank you " + name + "! Your essay has been submitted.";
+
+    document.getElementById("essay").value = "";
+}
+</script>
+
+</body>
+</html>
