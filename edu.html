@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ulaanbaatar Elite International School | IELTS Writing Practice</title>
+
+<!-- Coquette Font -->
+<link href="https://fonts.cdnfonts.com/css/coquette" rel="stylesheet">
+
+<style>
+:root{
+    --burgundy:#800020;
+    --light:#ffffff;
+    --gray:#f4f4f4;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Coquette', sans-serif;
+}
+
+body{
+    background:var(--light);
+    color:#333;
+    line-height:1.6;
+}
+
+header{
+    background:var(--burgundy);
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+nav{
+    background:#fafafa;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:15px;
+    border-bottom:2px solid var(--burgundy);
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--burgundy);
+    font-weight:bold;
+}
+
+section{
+    padding:40px 10%;
+}
+
+h2{
+    color:var(--burgundy);
+    margin-bottom:20px;
+}
+
+.card{
+    background:var(--gray);
+    padding:20px;
+    margin-bottom:20px;
+    border-left:5px solid var(--burgundy);
+}
+
+button{
+    background:var(--burgundy);
+    color:white;
+    padding:10px 20px;
+    border:none;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+textarea{
+    width:100%;
+    height:150px;
+    padding:10px;
+    margin-top:10px;
+}
+
+input[type="text"]{
+    padding:8px;
+    width:100%;
+    margin-top:10px;
+}
+
+.dashboard{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.progress-box{
+    flex:1;
+    background:var(--gray);
+    padding:20px;
+    border-left:5px solid var(--burgundy);
+}
+
+footer{
+    background:var(--burgundy);
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Ulaanbaatar Elite International School</h1>
+<p>IELTS Writing Practice Platform</p>
+</header>
+
+<nav>
+<a href="#task1">Task 1</a>
+<a href="#task2">Task 2</a>
+<a href="#bands">Band Scores</a>
+<a href="#samples">Samples</a>
+<a href="#submit">Submit Essay</a>
+<a href="#dashboard">Progress</a>
+</nav>
+
+<section id="task1">
+<h2>IELTS Writing Task 1</h2>
+<div class="card">
+<p><strong>Sample Question:</strong></p>
+<p>The chart below shows the percentage of households in Europe with internet access from 2000 to 2020. Summarise the information by selecting and reporting the main features.</p>
+<p><strong>Advice:</strong></p>
+<ul>
+<li>Write an overview paragraph.</li>
+<li>Compare trends, not individual numbers only.</li>
+<li>Use academic vocabulary (increase, decline, fluctuate).</li>
+</ul>
+</div>
+</section>
+
+<section id="task2">
+<h2>IELTS Writing Task 2</h2>
+<div class="card">
+<p><strong>Sample Question:</strong></p>
+<p>Some people believe that universities should focus only on academic subjects, while others think practical skills are more important. Discuss both views and give your opinion.</p>
+<p><strong>Advice:</strong></p>
+<ul>
+<li>Clear introduction with thesis statement.</li>
+<li>One idea per paragraph.</li>
+<li>Support ideas with explanations and examples.</li>
+</ul>
+</div>
+</section>
+
+<section id="bands">
+<h2>Band Score Explanation</h2>
+<div class="card">
+<p><strong>Band 9:</strong> Fully addresses task, sophisticated vocabulary, flawless grammar.</p>
+<p><strong>Band 7:</strong> Clear position, good vocabulary, minor errors.</p>
+<p><strong>Band 6:</strong> Relevant but limited development, noticeable grammar mistakes.</p>
+<p><strong>Improvement Tips:</strong></p>
+<ul>
+<li>Learn collocations.</li>
+<li>Improve grammar accuracy.</li>
+<li>Practice timed writing (40 minutes Task 2).</li>
+</ul>
+</div>
+</section>
+
+<section id="samples">
+<h2>Sample Essays</h2>
+<div class="card">
+<p><strong>Band 8 Sample (Task 2 excerpt):</strong></p>
+<p>While academic knowledge forms the foundation of higher education, practical skills equip students with the ability to apply theory in real-world situations...</p>
+</div>
+</section>
+
+<section id="submit">
+<h2>Essay Submission</h2>
+<div class="card">
+<input type="text" id="studentName" placeholder="Enter your name">
+<textarea id="essayText" placeholder="Write your essay here..."></textarea>
+<button onclick="submitEssay()">Submit Essay</button>
+<p id="message"></p>
+</div>
+</section>
+
+<section id="dashboard">
+<h2>Progress Dashboard</h2>
+<div class="dashboard">
+<div class="progress-box">
+<h3>Essays Submitted</h3>
+<p id="essayCount">0</p>
+</div>
+
+<div class="progress-box">
+<h3>Estimated Band</h3>
+<p id="bandEstimate">Not Available</p>
+</div>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Ulaanbaatar Elite International School | IELTS Writing Practice Platform</p>
+</footer>
+
+<script>
+let essayCounter = 0;
+
+function submitEssay(){
+    let essay = document.getElementById("essayText").value;
+    let message = document.getElementById("message");
+
+    if(essay.length < 100){
+        message.style.color = "red";
+        message.innerText = "Essay too short. Write at least 100 words.";
+        return;
+    }
+
+    essayCounter++;
+    document.getElementById("essayCount").innerText = essayCounter;
+
+    let band = estimateBand(essay);
+    document.getElementById("bandEstimate").innerText = band;
+
+    message.style.color = "green";
+    message.innerText = "Essay submitted successfully!";
+}
+
+function estimateBand(text){
+    let words = text.split(" ").length;
+
+    if(words > 300){
+        return "Band 7 - 8 (Good length & development)";
+    } else if(words > 200){
+        return "Band 6 - 7 (Adequate response)";
+    } else {
+        return "Band 5 - 6 (Needs more development)";
+    }
+}
+</script>
+
+</body>
+</html>
